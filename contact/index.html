@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Evolved Floors | Gold Coast, Brisbane & Byron Bay | Flooring Experts</title>
+    <meta name="description" content="Contact Evolved Floors: Gold Coast showroom, Byron Bay studio, Brisbane mobile service. Phone, email, hours. Get a quote or book a site measure today.">
+    <meta name="canonical" content="https://evolvedfloors.com.au/contact/">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%238a7f72' width='100' height='100'/><text x='50' y='50' font-size='60' fill='white' text-anchor='middle' dominant-baseline='middle' font-weight='bold'>E</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            border-bottom: 1px solid #e5e5e5;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+        }
+        
+        .logo {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-weight: 700;
+            color: #000;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #8a7f72;
+        }
+        
+        .cta-button {
+            background-color: #8a7f72;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #6f6b5e;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(135deg, #8a7f72 0%, #a39a88 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            font-weight: 300;
+        }
+        
+        /* Contact Form Section */
+        .contact-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .contact-info h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: #000;
+        }
+        
+        .contact-info h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 32px;
+            margin-bottom: 12px;
+            color: #000;
+        }
+        
+        .contact-info p {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 12px;
+            color: #555;
+        }
+        
+        .contact-info a {
+            color: #8a7f72;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-form h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: #000;
+        }
+        
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+        
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .contact-form button {
+            background-color: #8a7f72;
+            color: white;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .contact-form button:hover {
+            background-color: #6f6b5e;
+        }
+        
+        /* Locations Grid */
+        .locations-section {
+            background-color: white;
+            padding: 80px 20px;
+            border-top: 1px solid #e5e5e5;
+        }
+        
+        .locations-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        .locations-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-align: center;
+            color: #000;
+        }
+        
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .location-card {
+            padding: 40px;
+            background-color: #f0ebe5;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .location-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        
+        .location-card p {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 12px;
+            color: #555;
+        }
+        
+        .location-card a {
+            color: #8a7f72;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .location-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .location-map {
+            width: 100%;
+            height: 200px;
+            background-color: #e5e5e5;
+            border-radius: 8px;
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            color: #999;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 40px 20px;
+            font-size: 13px;
+        }
+        
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+        
+        .footer-section a:hover {
+            color: #fff;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            color: #999;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .locations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">EVOLVED FLOORS</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/gold-coast/">Gold Coast</a></li>
+                <li><a href="/brisbane/">Brisbane</a></li>
+                <li><a href="/byron-bay/">Byron Bay</a></li>
+                <li><a href="/commercial-flooring/">Commercial</a></li>
+                <li><a href="/about-evolved-floors/">About</a></li>
+                <li><a href="/contact/">Contact</a></li>
+                <li><a href="tel:1300451132" class="cta-button">1300 45 11 32</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Get in Touch</h1>
+            <p>Connect with our flooring experts across Gold Coast, Brisbane & Byron Bay</p>
+        </div>
+    </section>
+    
+    <!-- Contact Form & Info -->
+    <section class="contact-section">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                
+                <h3>Gold Coast Showroom</h3>
+                <p><strong>Address:</strong><br>Unit 4, 6-8 Enterprise Street<br>Molendinar QLD 4214</p>
+                <p><strong>Phone:</strong> <a href="tel:1300451132">1300 45 11 32</a></p>
+                <p><strong>Email:</strong> <a href="mailto:richard@elfloors.com.au">richard@elfloors.com.au</a></p>
+                <p><strong>Hours:</strong><br>Monday-Friday: 9:00am - 5:00pm<br>Saturday: 9:00am - 3:00pm<br>Sunday: Closed</p>
+                
+                <h3>Byron Bay Design Studio</h3>
+                <p><strong>Address:</strong><br>1 Porter Street<br>Byron Bay NSW 2481</p>
+                <p><strong>Phone:</strong> <a href="tel:1300451132">1300 45 11 32</a></p>
+                <p><strong>Hours:</strong><br>Monday-Friday: 9:00am - 5:00pm<br>Saturday: 9:00am - 3:00pm<br>Sunday: Closed</p>
+                
+                <h3>Brisbane Service</h3>
+                <p><strong>Service:</strong> In-home measures and samples</p>
+                <p><strong>Phone:</strong> <a href="tel:1300451132">1300 45 11 32</a></p>
+                <p><strong>Hours:</strong><br>Monday-Friday: 8:30am - 4:30pm<br>Saturday: 9:00am - 12:00pm<br>Sunday: Closed</p>
+            </div>
+            
+            <form class="contact-form" action="https://services.leadconnectorhq.com/hooks/1cvFdmlQAU5WpfaQwhB9/webhook-trigger/8f3b3455-3cd1-45bf-981c-87e4facc9049" method="POST">
+                <h2>Send Us a Message</h2>
+                <input type="text" name="name" placeholder="Your Full Name" required>
+                <input type="email" name="email" placeholder="Your Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <select name="page_source" required>
+                    <option value="">-- Select Your Location --</option>
+                    <option value="Contact Page - Gold Coast">Gold Coast</option>
+                    <option value="Contact Page - Byron Bay">Byron Bay</option>
+                    <option value="Contact Page - Brisbane">Brisbane</option>
+                    <option value="Contact Page - Other">Other / Not Sure</option>
+                </select>
+                <textarea name="message" placeholder="Tell us about your flooring project, questions, or enquiry..." required></textarea>
+                <button type="submit">Send Enquiry</button>
+                <p style="font-size: 12px; color: #999; margin-top: 16px;">We'll get back to you within 24 hours on business days.</p>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Locations Map Section -->
+    <section class="locations-section">
+        <div class="locations-container">
+            <h2>Visit Us</h2>
+            <div class="locations-grid">
+                <div class="location-card">
+                    <h3>Gold Coast Showroom</h3>
+                    <p>Unit 4, 6-8 Enterprise Street<br>Molendinar QLD 4214</p>
+                    <p><a href="tel:1300451132">1300 45 11 32</a></p>
+                    <p><strong>Mon-Fri:</strong> 9:00am - 5:00pm<br><strong>Sat:</strong> 9:00am - 3:00pm</p>
+                    <div class="location-map">
+                        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=400&h=200&fit=crop" alt="Gold Coast showroom" style="width:100%; height:100%; object-fit:cover; border-radius: 4px;">
+                    </div>
+                </div>
+                
+                <div class="location-card">
+                    <h3>Byron Bay Studio</h3>
+                    <p>1 Porter Street<br>Byron Bay NSW 2481<br>(Habitat Precinct)</p>
+                    <p><a href="tel:1300451132">1300 45 11 32</a></p>
+                    <p><strong>Mon-Fri:</strong> 9:00am - 5:00pm<br><strong>Sat:</strong> 9:00am - 3:00pm</p>
+                    <div class="location-map">
+                        <img src="https://images.unsplash.com/photo-1505228395891-9a51e7e86e81?w=400&h=200&fit=crop" alt="Byron Bay design studio" style="width:100%; height:100%; object-fit:cover; border-radius: 4px;">
+                    </div>
+                </div>
+                
+                <div class="location-card">
+                    <h3>Brisbane Mobile Service</h3>
+                    <p>We bring samples to your home<br>In-home measures & consultation</p>
+                    <p><a href="tel:1300451132">1300 45 11 32</a></p>
+                    <p><strong>Mon-Fri:</strong> 8:30am - 4:30pm<br><strong>Sat:</strong> 9:00am - 12:00pm</p>
+                    <div class="location-map">
+                        <img src="https://images.unsplash.com/photo-1494145904049-0dca7b3b1d13?w=400&h=200&fit=crop" alt="Brisbane mobile service" style="width:100%; height:100%; object-fit:cover; border-radius: 4px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Gold Coast</h4>
+                <p>Unit 4, 6-8 Enterprise Street<br>Molendinar QLD 4214<br><a href="tel:1300451132">1300 45 11 32</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Byron Bay</h4>
+                <p>1 Porter Street<br>Byron Bay NSW 2481<br><a href="tel:1300451132">1300 45 11 32</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <p><a href="/about-evolved-floors/">About</a><br><a href="/contact/">Contact</a><br><a href="/">Home</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <p><a href="/privacy-policy/">Privacy Policy</a><br><a href="/terms/">Terms & Conditions</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Evolved Floors. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

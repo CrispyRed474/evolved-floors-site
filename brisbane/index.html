@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flooring Brisbane | Premium Supply & Installation Service | Evolved Floors</title>
+    <meta name="description" content="Premium flooring in Brisbane with in-home site measures and samples. Timber, hybrid, vinyl, carpet. Expert guidance for renovations, new builds, investment properties.">
+    <meta name="canonical" content="https://evolvedfloors.com.au/brisbane/">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%238a7f72' width='100' height='100'/><text x='50' y='50' font-size='60' fill='white' text-anchor='middle' dominant-baseline='middle' font-weight='bold'>E</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            border-bottom: 1px solid #e5e5e5;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+        }
+        
+        .logo {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-weight: 700;
+            color: #000;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #8a7f72;
+        }
+        
+        .cta-button {
+            background-color: #8a7f72;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #6f6b5e;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 600px;
+            background: linear-gradient(135deg, #8fa8c0 0%, #7a94b8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 32px;
+            font-weight: 300;
+        }
+        
+        .hero-button {
+            display: inline-block;
+            background-color: white;
+            color: #8fa8c0;
+            padding: 14px 40px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 0 10px;
+        }
+        
+        .hero-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* Content Section */
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        
+        .content-section h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        
+        .content-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .content-section ul {
+            margin-left: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .content-section ul li {
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #555;
+        }
+        
+        /* Tile Grid */
+        .tile-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .tile-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #000;
+        }
+        
+        .tile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        
+        .tile {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .tile:hover {
+            transform: scale(1.02);
+        }
+        
+        .tile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .tile-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 24px;
+            transition: background 0.3s ease;
+        }
+        
+        .tile:hover .tile-overlay {
+            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+        }
+        
+        .tile-label {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            width: 100%;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background-color: #f0ebe5;
+            padding: 60px 20px;
+        }
+        
+        .contact-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        
+        .contact-info p {
+            margin-bottom: 16px;
+            font-size: 15px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .contact-info a {
+            color: #8a7f72;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+        
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .contact-form button {
+            background-color: #8a7f72;
+            color: white;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .contact-form button:hover {
+            background-color: #6f6b5e;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 40px 20px;
+            font-size: 13px;
+        }
+        
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+        
+        .footer-section a:hover {
+            color: #fff;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            color: #999;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .tile-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .tile-section h2 {
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .tile-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">EVOLVED FLOORS</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/gold-coast/">Gold Coast</a></li>
+                <li><a href="/brisbane/">Brisbane</a></li>
+                <li><a href="/byron-bay/">Byron Bay</a></li>
+                <li><a href="/commercial-flooring/">Commercial</a></li>
+                <li><a href="/about-evolved-floors/">About</a></li>
+                <li><a href="/contact/">Contact</a></li>
+                <li><a href="tel:1300451132" class="cta-button">1300 45 11 32</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Brisbane Flooring Service</h1>
+            <p>In-home measures and premium products delivered to you</p>
+            <a href="https://tools.evolvedluxuryfloors.com.au" class="hero-button">Book a Site Measure</a>
+            <a href="#contact" class="hero-button">Get a Quote</a>
+        </div>
+    </section>
+    
+    <!-- Content Section -->
+    <section class="content-section">
+        <h2>Brisbane In-Home Site Measures & Samples</h2>
+        <p>Looking for premium flooring in Brisbane without the showroom runaround? Evolved Floors makes it easy to choose the right product with in-home site measures and samples brought to you. Whether you're renovating, building new, or updating an investment property, our team helps you select a floor that suits your style, your budget, and the way you actually live.</p>
+        
+        <p>Brisbane homes can vary hugely from inner-city apartments to family homes and acreage properties, and the right flooring choice depends on more than colour. We'll guide you through practical considerations like durability, water resistance, acoustic comfort, pet-friendliness, slip resistance, and how different products perform in high-traffic areas.</p>
+        
+        <p>During your at-home site measure, we check key details that impact the final result, including subfloor condition, transitions, door clearances, and any moisture or level requirements. We'll also show you samples in your lighting so you can confidently match your flooring to your cabinetry, paint colours, and furnishings.</p>
+        
+        <h2 style="margin-top: 40px;">Our Premium Range Includes:</h2>
+        <ul>
+            <li>Hybrid flooring - perfect for Brisbane's humidity</li>
+            <li>Luxury vinyl - stunning realism with durability</li>
+            <li>Engineered timber - authentic wood, Brisbane-ready</li>
+            <li>Carpet and laminate options - comfort and value</li>
+            <li>Acoustic wall panels and feature finishes</li>
+        </ul>
+        
+        <p>Our process is straightforward and transparent. You can request an instant quote, book a measure, or speak with our team about timelines and product availability. If you're working with a builder, architect, or designer, we can support specifications and sample coordination to keep your project moving.</p>
+        
+        <p>If you want a better way to do flooring in Brisbane, expert-led advice, premium products, and a smooth experience from selection to installation, we're here to help. Call 1300 45 11 32 to book your Brisbane site measure or get started today.</p>
+    </section>
+    
+    <!-- Tile Grid - Product Categories -->
+    <section class="tile-section">
+        <h2>Flooring Products</h2>
+        <div class="tile-grid">
+            <div class="tile">
+                <img src="https://images.unsplash.com/photo-1549887534-7e1df2f5a54b?w=400&h=400&fit=crop" alt="Timber Flooring" class="tile-image">
+                <div class="tile-overlay">
+                    <div class="tile-label">Timber</div>
+                </div>
+            </div>
+            
+            <div class="tile">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=400&fit=crop" alt="Hybrid Flooring" class="tile-image">
+                <div class="tile-overlay">
+                    <div class="tile-label">Hybrid</div>
+                </div>
+            </div>
+            
+            <div class="tile">
+                <img src="https://images.unsplash.com/photo-1565879822722-f4b4ced7e7e9?w=400&h=400&fit=crop" alt="Carpet Flooring" class="tile-image">
+                <div class="tile-overlay">
+                    <div class="tile-label">Carpet</div>
+                </div>
+            </div>
+            
+            <div class="tile">
+                <img src="https://images.unsplash.com/photo-1576909267733-3d2e7b8fa3f4?w=400&h=400&fit=crop" alt="Vinyl Flooring" class="tile-image">
+                <div class="tile-overlay">
+                    <div class="tile-label">Vinyl</div>
+                </div>
+            </div>
+            
+            <div class="tile">
+                <img src="https://images.unsplash.com/photo-1584545604476-c629fb35dbf5?w=400&h=400&fit=crop" alt="Laminate Flooring" class="tile-image">
+                <div class="tile-overlay">
+                    <div class="tile-label">Laminate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Brisbane Flooring Service</h3>
+                <p><strong>Mobile Service Available</strong><br>
+                We bring samples and expertise to your home for a free site measure and consultation.</p>
+                
+                <p><strong>Phone:</strong> <a href="tel:1300451132">1300 45 11 32</a></p>
+                <p><strong>Email:</strong> <a href="mailto:richard@elfloors.com.au">richard@elfloors.com.au</a></p>
+                <p><strong>Hours:</strong> Mon-Fri 8:30am-4:30pm, Sat 9am-12pm</p>
+                
+                <p style="margin-top: 30px;"><a href="https://tools.evolvedluxuryfloors.com.au" style="display: inline-block; background-color: #8a7f72; color: white; padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: 600;">Book Your Measure</a></p>
+            </div>
+            
+            <form class="contact-form" action="https://services.leadconnectorhq.com/hooks/1cvFdmlQAU5WpfaQwhB9/webhook-trigger/8f3b3455-3cd1-45bf-981c-87e4facc9049" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="tel" name="phone" placeholder="Phone Number">
+                <textarea name="message" placeholder="Tell us about your project..." required></textarea>
+                <input type="hidden" name="page_source" value="Brisbane Service">
+                <button type="submit">Request a Quote</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Gold Coast</h4>
+                <p>Unit 4, 6-8 Enterprise Street<br>Molendinar QLD 4214<br><a href="tel:1300451132">1300 45 11 32</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Byron Bay</h4>
+                <p>1 Porter Street<br>Byron Bay NSW 2481<br><a href="tel:1300451132">1300 45 11 32</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <p><a href="/about-evolved-floors/">About</a><br><a href="/contact/">Contact</a><br><a href="/">Home</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <p><a href="/privacy-policy/">Privacy Policy</a><br><a href="/terms/">Terms & Conditions</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Evolved Floors. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

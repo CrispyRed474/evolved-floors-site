@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Evolved Floors | Family-Owned Flooring Experts | Gold Coast</title>
+    <meta name="description" content="Family-owned flooring specialist with 45+ years combined industry experience. Premium flooring in Gold Coast, Brisbane, Byron Bay. Quality, transparency, expert installation.">
+    <meta name="canonical" content="https://evolvedfloors.com.au/about-evolved-floors/">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%238a7f72' width='100' height='100'/><text x='50' y='50' font-size='60' fill='white' text-anchor='middle' dominant-baseline='middle' font-weight='bold'>E</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            border-bottom: 1px solid #e5e5e5;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+        }
+        
+        .logo {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-weight: 700;
+            color: #000;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #8a7f72;
+        }
+        
+        .cta-button {
+            background-color: #8a7f72;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #6f6b5e;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(135deg, #8a7f72 0%, #a39a88 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            font-weight: 300;
+        }
+        
+        /* Content Section */
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        
+        .content-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        
+        .content-section h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        
+        .content-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .content-section ul {
+            margin-left: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .content-section ul li {
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        /* Values Grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+        }
+        
+        .value-card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            border-left: 4px solid #8a7f72;
+        }
+        
+        .value-card h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #000;
+        }
+        
+        .value-card p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        /* Team Section */
+        .team-section {
+            background-color: white;
+            padding: 80px 20px;
+            border-top: 1px solid #e5e5e5;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .team-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        .team-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-align: center;
+            color: #000;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-image {
+            width: 100%;
+            height: 300px;
+            background-color: #e5e5e5;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #999;
+        }
+        
+        .team-member h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #000;
+        }
+        
+        .team-member p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Locations Section */
+        .locations-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        
+        .locations-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-align: center;
+            color: #000;
+        }
+        
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .location-card {
+            background-color: #f0ebe5;
+            padding: 40px;
+            border-radius: 8px;
+        }
+        
+        .location-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #000;
+        }
+        
+        .location-card p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+        
+        .location-card a {
+            color: #8a7f72;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .location-card a:hover {
+            text-decoration: underline;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background-color: #8a7f72;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+        
+        .cta-button-white {
+            display: inline-block;
+            background-color: white;
+            color: #8a7f72;
+            padding: 14px 40px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .cta-button-white:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 40px 20px;
+            font-size: 13px;
+        }
+        
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+        
+        .footer-section a:hover {
+            color: #fff;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            color: #999;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .content-section h2,
+            .team-section h2,
+            .locations-section h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">EVOLVED FLOORS</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/gold-coast/">Gold Coast</a></li>
+                <li><a href="/brisbane/">Brisbane</a></li>
+                <li><a href="/byron-bay/">Byron Bay</a></li>
+                <li><a href="/commercial-flooring/">Commercial</a></li>
+                <li><a href="/about-evolved-floors/">About</a></li>
+                <li><a href="/contact/">Contact</a></li>
+                <li><a href="tel:1300451132" class="cta-button">1300 45 11 32</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>About Evolved Floors</h1>
+            <p>Family-owned flooring experts serving Queensland since 2014</p>
+        </div>
+    </section>
+    
+    <!-- Our Story -->
+    <section class="content-section">
+        <h2>Our Story</h2>
+        <p>What started as a passion for quality flooring has evolved into a trusted name across South East Queensland and Northern NSW. We've built our reputation on craftsmanship, transparency, and putting our customers first.</p>
+        
+        <p>We're a family-owned business with 45+ years of combined industry experience. That means when you work with us, you're not dealing with a faceless corporation. You're working with people who care about your project, understand flooring inside and out, and stand behind every installation.</p>
+        
+        <p>Since 2014, we've been helping homeowners, builders, architects, and businesses find the right flooring solution. Whether it's a Gold Coast coastal home that needs moisture-resistant hybrid flooring, a Brisbane commercial fit-out, or a Byron Bay renovation where every design detail matters, we bring expertise, integrity, and a genuine partnership approach to every project.</p>
+        
+        <h2>Why Choose Evolved Floors</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <h4>Decades of Experience</h4>
+                <p>45+ years of combined industry expertise across timber, vinyl, hybrid, carpet, and commercial solutions. Our team knows what works.</p>
+            </div>
+            
+            <div class="value-card">
+                <h4>Family-Owned</h4>
+                <p>Personal service and genuine care for every project. No corporate runaround, just straightforward expertise and accountability.</p>
+            </div>
+            
+            <div class="value-card">
+                <h4>Premium Products</h4>
+                <p>Top brands and the latest styles. We source carefully and recommend only products we'd use in our own homes.</p>
+            </div>
+            
+            <div class="value-card">
+                <h4>Expert Installation</h4>
+                <p>Qualified, insured installers who take pride in their work. Every floor is installed to the highest standard.</p>
+            </div>
+            
+            <div class="value-card">
+                <h4>Transparent Pricing</h4>
+                <p>No hidden fees, clear quotes, and realistic timelines. You know exactly what you're getting and when.</p>
+            </div>
+            
+            <div class="value-card">
+                <h4>Local, Not Chain</h4>
+                <p>Three locations serving Gold Coast, Brisbane, and Byron Bay. Real relationships in the communities we serve.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="team-container">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-image">Photo coming soon</div>
+                    <h3>Flooring Team</h3>
+                    <p>Expert flooring specialists with deep product knowledge and installation experience across all types of flooring solutions.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-image">Photo coming soon</div>
+                    <h3>Design Consultants</h3>
+                    <p>Creative professionals who help match flooring to your home's style, lighting, and lifestyle needs.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-image">Photo coming soon</div>
+                    <h3>Installation Experts</h3>
+                    <p>Qualified installers who ensure every project meets the highest quality standards from start to finish.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Brand Values -->
+    <section class="content-section">
+        <h2>Our Values</h2>
+        <ul>
+            <li><strong>Quality:</strong> We stand behind every installation. Premium products, expert craftsmanship, zero shortcuts.</li>
+            <li><strong>Transparency:</strong> Clear communication, upfront pricing, realistic timelines. No surprises.</li>
+            <li><strong>Expertise:</strong> 45+ years of combined knowledge. We know flooring, and we share what we know.</li>
+            <li><strong>Local:</strong> Gold Coast, Brisbane, Byron Bay. We're invested in these communities because we live in them.</li>
+        </ul>
+    </section>
+    
+    <!-- Locations Section -->
+    <section class="locations-section">
+        <h2>Our Locations</h2>
+        <div class="locations-grid">
+            <div class="location-card">
+                <h3>Gold Coast Showroom</h3>
+                <p>Unit 4, 6-8 Enterprise Street<br>Molendinar QLD 4214</p>
+                <p><a href="tel:1300451132">1300 45 11 32</a></p>
+                <p><strong>Hours:</strong><br>Mon-Fri: 9am - 5pm<br>Sat: 9am - 3pm</p>
+                <p><a href="/gold-coast/">Visit Showroom</a></p>
+            </div>
+            
+            <div class="location-card">
+                <h3>Byron Bay Design Studio</h3>
+                <p>1 Porter Street<br>Byron Bay NSW 2481</p>
+                <p><a href="tel:1300451132">1300 45 11 32</a></p>
+                <p><strong>Hours:</strong><br>Mon-Fri: 9am - 5pm<br>Sat: 9am - 3pm</p>
+                <p><a href="/byron-bay/">Visit Studio</a></p>
+            </div>
+            
+            <div class="location-card">
+                <h3>Brisbane Mobile Service</h3>
+                <p>In-home measures and samples<br>Serving greater Brisbane</p>
+                <p><a href="tel:1300451132">1300 45 11 32</a></p>
+                <p><strong>Hours:</strong><br>Mon-Fri: 8:30am - 4:30pm<br>Sat: 9am - 12pm</p>
+                <p><a href="/brisbane/">Learn More</a></p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Upgrade Your Floors?</h2>
+        <p>Get in touch with our team for expert advice, a free quote, or to book a site measure.</p>
+        <a href="/contact/" class="cta-button-white">Contact Us Today</a>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Gold Coast</h4>
+                <p>Unit 4, 6-8 Enterprise Street<br>Molendinar QLD 4214<br><a href="tel:1300451132">1300 45 11 32</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Byron Bay</h4>
+                <p>1 Porter Street<br>Byron Bay NSW 2481<br><a href="tel:1300451132">1300 45 11 32</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <p><a href="/about-evolved-floors/">About</a><br><a href="/contact/">Contact</a><br><a href="/">Home</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <p><a href="/privacy-policy/">Privacy Policy</a><br><a href="/terms/">Terms & Conditions</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Evolved Floors. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

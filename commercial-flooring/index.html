@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commercial Flooring Gold Coast Brisbane | Developers, Builders, Architects | Evolved Floors</title>
+    <meta name="description" content="Commercial flooring for developers, builders, architects across Gold Coast, Brisbane, Byron Bay. Offices, retail, hospitality, healthcare. Single point of contact, on-time delivery.">
+    <meta name="canonical" content="https://evolvedfloors.com.au/commercial-flooring/">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%238a7f72' width='100' height='100'/><text x='50' y='50' font-size='60' fill='white' text-anchor='middle' dominant-baseline='middle' font-weight='bold'>E</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            border-bottom: 1px solid #e5e5e5;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+        }
+        
+        .logo {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-weight: 700;
+            color: #000;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #8a7f72;
+        }
+        
+        .cta-button {
+            background-color: #8a7f72;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #6f6b5e;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 600px;
+            background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 32px;
+            font-weight: 300;
+        }
+        
+        .hero-button {
+            display: inline-block;
+            background-color: white;
+            color: #6b7280;
+            padding: 14px 40px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 0 10px;
+        }
+        
+        .hero-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* Content Section */
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        
+        .content-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        
+        .content-section h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        
+        .content-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .content-section ul {
+            margin-left: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .content-section ul li {
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 32px;
+            border-radius: 8px;
+            border-left: 4px solid #8a7f72;
+        }
+        
+        .feature-card h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #000;
+        }
+        
+        .feature-card p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        /* Case Studies Section */
+        .case-studies-section {
+            background-color: white;
+            padding: 80px 20px;
+            border-top: 1px solid #e5e5e5;
+        }
+        
+        .case-studies-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        .case-studies-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-align: center;
+            color: #000;
+        }
+        
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+        
+        .case-study {
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+        
+        .case-study-image {
+            width: 100%;
+            height: 200px;
+            background-color: #e5e5e5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            color: #999;
+        }
+        
+        .case-study-content {
+            padding: 32px;
+        }
+        
+        .case-study h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #000;
+        }
+        
+        .case-study-meta {
+            font-size: 13px;
+            color: #8a7f72;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .case-study p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Products Section */
+        .products-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        
+        .products-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-align: center;
+            color: #000;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+        
+        .product-card {
+            background-color: #f0ebe5;
+            padding: 32px;
+            border-radius: 8px;
+        }
+        
+        .product-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #000;
+        }
+        
+        .product-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background-color: #f0ebe5;
+            padding: 60px 20px;
+        }
+        
+        .contact-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        
+        .contact-info p {
+            margin-bottom: 16px;
+            font-size: 15px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .contact-info a {
+            color: #8a7f72;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+        
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .contact-form button {
+            background-color: #8a7f72;
+            color: white;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .contact-form button:hover {
+            background-color: #6f6b5e;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 40px 20px;
+            font-size: 13px;
+        }
+        
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+        
+        .footer-section a:hover {
+            color: #fff;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            color: #999;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .content-section h2,
+            .case-studies-section h2,
+            .products-section h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">EVOLVED FLOORS</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/gold-coast/">Gold Coast</a></li>
+                <li><a href="/brisbane/">Brisbane</a></li>
+                <li><a href="/byron-bay/">Byron Bay</a></li>
+                <li><a href="/commercial-flooring/">Commercial</a></li>
+                <li><a href="/about-evolved-floors/">About</a></li>
+                <li><a href="/contact/">Contact</a></li>
+                <li><a href="tel:1300451132" class="cta-button">1300 45 11 32</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Commercial Flooring Solutions</h1>
+            <p>Supply and installation for developers, builders, architects across Queensland</p>
+            <a href="#contact" class="hero-button">Discuss Your Project</a>
+            <a href="#products" class="hero-button">View Products</a>
+        </div>
+    </section>
+    
+    <!-- Overview Section -->
+    <section class="content-section">
+        <h2>Commercial Flooring Projects</h2>
+        <p>Supply and installation for developers, builders, architects and fitout companies across Gold Coast, Brisbane and Byron Bay. From 50m² shopfits to 500m²+ multi-storey developments, we deliver on schedule, on budget, and to specification.</p>
+        
+        <h3>Why Evolved Floors for Commercial</h3>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h4>Single Point of Contact</h4>
+                <p>One team from specification through to installation. No sub-contractors, no gaps, no excuses. Direct communication and accountability.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h4>Built Around Your Programme</h4>
+                <p>We work to your build schedule. Staged deliveries, flexible installation windows, on-time handover. Your timeline is our priority.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h4>Volume Capability</h4>
+                <p>From shopfits to multi-storey commercial. We've scaled our operations to handle projects of any size without compromising quality.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h4>Specification Support</h4>
+                <p>We understand architect documentation, finish standards, and building codes. We know what looks good on paper and what performs on site.</p>
+            </div>
+        </div>
+        
+        <h3>Who We Work With</h3>
+        <ul>
+            <li><strong>Property Developers:</strong> Large-scale residential and mixed-use projects with tight handover deadlines</li>
+            <li><strong>Builders & Contractors:</strong> New construction, renovations, and staged developments</li>
+            <li><strong>Architects & Designers:</strong> Specification support, sample coordination, technical detail management</li>
+            <li><strong>Shopfitters & Retail Fitouts:</strong> Custom finishes, brand-specific requirements, fast turnaround</li>
+            <li><strong>Commercial Renovation:</strong> Offices, corporate headquarters, refurbishment projects</li>
+            <li><strong>Hospitality & Accommodation:</strong> Hotels, restaurants, bars, accommodation facilities</li>
+        </ul>
+    </section>
+    
+    <!-- Case Studies Section -->
+    <section class="case-studies-section">
+        <div class="case-studies-container">
+            <h2>Recent Projects</h2>
+            <div class="case-studies-grid">
+                <div class="case-study">
+                    <div class="case-study-image">
+                        <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400&h=200&fit=crop" alt="Bundall Road office">
+                    </div>
+                    <div class="case-study-content">
+                        <h3>Bundall Road, Gold Coast</h3>
+                        <div class="case-study-meta">220m² | Two-storey office fitout</div>
+                        <p><strong>Scope:</strong> Carpet uplift and disposal, concrete grinding, flood levelling, luxury vinyl plank throughout</p>
+                        <p style="margin-top: 12px;"><strong>Challenge:</strong> Occupied building - phased installation to keep business operational</p>
+                        <p style="margin-top: 12px;"><strong>Outcome:</strong> Delivered on schedule. Zero defects. Client retained for ongoing maintenance.</p>
+                    </div>
+                </div>
+                
+                <div class="case-study">
+                    <div class="case-study-image">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=200&fit=crop" alt="Wholesale Foods commercial">
+                    </div>
+                    <div class="case-study-content">
+                        <h3>Wholesale Foods, Molendinar</h3>
+                        <div class="case-study-meta">450m² | New commercial fitout</div>
+                        <p><strong>Scope:</strong> Laminate flooring throughout, sheet vinyl in wet areas and on stairs</p>
+                        <p style="margin-top: 12px;"><strong>Outcome:</strong> Completed on time for opening day. High-traffic durability maintained.</p>
+                    </div>
+                </div>
+                
+                <div class="case-study">
+                    <div class="case-study-image">
+                        <img src="https://images.unsplash.com/photo-1576909267733-3d2e7b8fa3f4?w=400&h=200&fit=crop" alt="High-end technical project">
+                    </div>
+                    <div class="case-study-content">
+                        <h3>High-End Technical Detail</h3>
+                        <div class="case-study-meta">Specialty | Precision fitout</div>
+                        <p><strong>Client feedback:</strong> "The attention to detail was exceptional - they worked around our curved architectural features perfectly. We couldn't be happier."</p>
+                        <p style="margin-top: 12px;"><em>- Google Review</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <h2>Commercial Flooring Products</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <h3>Luxury Vinyl Plank (LVP)</h3>
+                <p>High-traffic durability with stunning aesthetic. Perfect for offices, retail, and hospitality environments. Wear-resistant, easy to maintain, cost-effective.</p>
+            </div>
+            
+            <div class="product-card">
+                <h3>Engineered Timber</h3>
+                <p>Premium reception and executive spaces. Authentic wood appearance with superior dimensional stability. Suitable for climate-controlled environments.</p>
+            </div>
+            
+            <div class="product-card">
+                <h3>Sheet Vinyl</h3>
+                <p>Seamless wet areas. Hygienic, waterproof, easy-to-clean. Ideal for kitchens, bathrooms, medical facilities, and food service areas.</p>
+            </div>
+            
+            <div class="product-card">
+                <h3>Carpet</h3>
+                <p>Acoustic comfort and professional appearance. Office environments, open-plan spaces, corporate facilities. Stain-resistant and durable options available.</p>
+            </div>
+            
+            <div class="product-card">
+                <h3>Laminate</h3>
+                <p>Cost-effective commercial solution. Retail environments, commercial spaces, and high-volume applications. Durable wear layer, easy maintenance.</p>
+            </div>
+            
+            <div class="product-card">
+                <h3>Specialty Finishes</h3>
+                <p>Custom solutions for unique requirements. Acoustic panels, feature finishes, and brand-specific applications. We handle specialty requests.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Ready to Discuss Your Project?</h3>
+                <p>Send us your plans, scope of works, or project details. Our commercial flooring team will respond within 24 hours on business days.</p>
+                
+                <p><strong>Phone:</strong> <a href="tel:1300451132">1300 45 11 32</a></p>
+                <p><strong>Email:</strong> <a href="mailto:richard@elfloors.com.au">richard@elfloors.com.au</a></p>
+                <p><strong>Locations:</strong> Gold Coast | Brisbane | Byron Bay</p>
+                
+                <p style="margin-top: 30px;"><strong>Service Areas:</strong> South East Queensland & Northern NSW</p>
+            </div>
+            
+            <form class="contact-form" action="https://services.leadconnectorhq.com/hooks/1cvFdmlQAU5WpfaQwhB9/webhook-trigger/8f3b3455-3cd1-45bf-981c-87e4facc9049" method="POST">
+                <input type="text" name="name" placeholder="Project Name / Your Name" required>
+                <input type="email" name="email" placeholder="Your Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <textarea name="message" placeholder="Describe your project: scope, timeline, location, budget range, flooring types..." required></textarea>
+                <input type="hidden" name="page_source" value="Commercial Flooring">
+                <button type="submit">Send Project Details</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Gold Coast</h4>
+                <p>Unit 4, 6-8 Enterprise Street<br>Molendinar QLD 4214<br><a href="tel:1300451132">1300 45 11 32</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Byron Bay</h4>
+                <p>1 Porter Street<br>Byron Bay NSW 2481<br><a href="tel:1300451132">1300 45 11 32</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <p><a href="/about-evolved-floors/">About</a><br><a href="/contact/">Contact</a><br><a href="/">Home</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <p><a href="/privacy-policy/">Privacy Policy</a><br><a href="/terms/">Terms & Conditions</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Evolved Floors. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
