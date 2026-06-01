@@ -9,7 +9,7 @@
 
 // Configuration
 const VERIFY_NUMBER_PLACEHOLDER = '+1800VERIFY'; // Rich will update this with actual GHL number
-const GHL_API_KEY = 'pit-09c2b531-b9e2-416f-89c4-edeefd913e68';
+const GHL_API_KEY = GHL_TOKEN; // Set via: wrangler secret put GHL_TOKEN
 const GHL_LOCATION_ID = '1cvFdmlQAU5WpfaQwhB9';
 const GHL_VERSION = '2021-07-28';
 
