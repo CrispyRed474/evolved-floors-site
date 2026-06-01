@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Your Flooring Estimate — Evolved Floors</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand-color: #8a7f72;
+            --bg-light: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --error: #dc3545;
+            --success: #28a745;
+            --border: #e0e0e0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header/Nav */
+        .header {
+            background-color: var(--bg-light);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--brand-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-color);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            height: 4px;
+            background-color: var(--border);
+            width: 100%;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--brand-color);
+            transition: width 0.3s ease;
+        }
+
+        /* Main container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            min-height: 60vh;
+        }
+
+        /* Form wrapper */
+        .form-wrapper {
+            animation: slideInLeft 0.4s ease-out;
+        }
+
+        .form-wrapper.exit-right {
+            animation: slideOutRight 0.3s ease-in;
+        }
+
+        .form-wrapper.exit-left {
+            animation: slideOutLeft 0.3s ease-in;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+        }
+
+        @keyframes slideOutLeft {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+        }
+
+        /* Step heading */
+        .step-heading {
+            margin-bottom: 2rem;
+        }
+
+        .step-number {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .step-heading h2 {
+            font-size: 2rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 640px) {
+            .step-heading h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Tile buttons */
+        .tiles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tile {
+            padding: 2rem 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            background-color: var(--bg-light);
+        }
+
+        .tile:hover {
+            border-color: var(--brand-color);
+            box-shadow: 0 4px 12px rgba(138, 127, 114, 0.1);
+        }
+
+        .tile.selected {
+            border-color: var(--brand-color);
+            background-color: rgba(138, 127, 114, 0.05);
+        }
+
+        .tile-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .tile-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .tile-description {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        /* Form fields */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--brand-color);
+            box-shadow: 0 0 0 3px rgba(138, 127, 114, 0.1);
+        }
+
+        input[type="text"].error,
+        input[type="email"].error,
+        input[type="tel"].error {
+            border-color: var(--error);
+        }
+
+        .error-message {
+            color: var(--error);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Area calculator */
+        .area-section {
+            margin-bottom: 2rem;
+        }
+
+        .room-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .room-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            align-items: center;
+        }
+
+        .room-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--brand-color);
+        }
+
+        .room-item label {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .room-item.disabled {
+            opacity: 0.5;
+        }
+
+        .room-item input[type="number"] {
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .area-total {
+            background-color: rgba(138, 127, 114, 0.05);
+            border: 2px solid var(--brand-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .area-total-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .area-total-value {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--brand-color);
+        }
+
+        .area-warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 1rem;
+            border-radius: 4px;
+            color: #856404;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .area-warning.show {
+            display: block;
+        }
+
+        .area-warning strong {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Checkbox group */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--brand-color);
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 0.875rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background-color: var(--brand-color);
+            color: white;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: #6b6359;
+            box-shadow: 0 4px 12px rgba(138, 127, 114, 0.3);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--brand-color);
+            border: 2px solid var(--border);
+            flex: 0 1 auto;
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            border-color: var(--brand-color);
+            background-color: rgba(138, 127, 114, 0.05);
+        }
+
+        /* Message screens */
+        .message-screen {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .message-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .message-screen h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .message-screen p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .message-screen a {
+            color: var(--brand-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .message-screen a:hover {
+            text-decoration: underline;
+        }
+
+        /* Verification screen */
+        .verification-screen {
+            text-align: center;
+            animation: slideInLeft 0.4s ease-out;
+        }
+
+        .verification-screen h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .verification-screen p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .code-input-group {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .code-input {
+            width: 45px;
+            height: 50px;
+            padding: 0.5rem;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+
+        .code-input:focus {
+            outline: none;
+            border-color: var(--brand-color);
+        }
+
+        .code-input.error {
+            border-color: var(--error);
+            background-color: #fff5f5;
+        }
+
+        .code-message {
+            color: var(--error);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            display: none;
+            min-height: 1.2rem;
+        }
+
+        .code-message.show {
+            display: block;
+        }
+
+        .code-message.success {
+            color: var(--success);
+        }
+
+        .resend-group {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .resend-link {
+            color: var(--brand-color);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .resend-link:hover {
+            text-decoration: underline;
+        }
+
+        .resend-link:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .resend-timer {
+            display: inline;
+        }
+
+        /* Success screen */
+        .success-screen {
+            text-align: center;
+            padding: 3rem 1rem;
+            animation: slideInLeft 0.4s ease-out;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--success);
+        }
+
+        .success-screen h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .success-screen p {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--bg-light);
+            border-top: 1px solid var(--border);
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--brand-color);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(138, 127, 114, 0.3);
+            border-top-color: var(--brand-color);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .step-heading h2 {
+                font-size: 1.25rem;
+            }
+
+            .tiles {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+
+            .room-item {
+                grid-template-columns: auto 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="logo">Evolved Floors</a>
+            <nav class="nav-links">
+                <li><a href="/products">Products</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Progress bar -->
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- Main container -->
+    <div class="container">
+        <div id="formContainer"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/products">Products</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+                <a href="/">Home</a>
+            </div>
+            <p>&copy; 2026 Evolved Floors. All rights reserved. | Gold Coast (07) 5572 1332 | Byron Bay (02) 6680 7745</p>
+        </div>
+    </footer>
+
+    <script>
+        // Configuration
+        const WORKER_URL = 'https://get-started.evolved-floors.workers.dev';
+        const FORM_STEPS = 6;
+
+        // State management
+        let formState = {
+            currentStep: 1,
+            service_type: null,
+            suburb: null,
+            postcode: null,
+            market: null,
+            flooring_type: null,
+            rooms: {
+                'living_dining': { checked: false, area: 0 },
+                'master_bedroom': { checked: false, area: 0 },
+                'bedroom_2': { checked: false, area: 0 },
+                'bedroom_3': { checked: false, area: 0 },
+                'bedroom_4': { checked: false, area: 0 },
+                'hallway': { checked: false, area: 0 },
+                'other': { checked: false, area: 0 }
+            },
+            area_sqm: 0,
+            timeline: null,
+            name: null,
+            email: null,
+            phone: null,
+            agreedToTerms: false,
+            contactId: null
+        };
+
+        // Service areas mapping
+        const SERVICE_AREAS = {
+            'Gold Coast': {
+                postcodes: [4000, 4001, 4002, 4003, 4004, 4005, 4006, 4007, 4008, 4009, 4010,
+                           4011, 4012, 4013, 4014, 4015, 4016, 4017, 4018, 4019, 4020,
+                           4021, 4022, 4023, 4024, 4025, 4026, 4027, 4028, 4029, 4030, 4299],
+                suburbs: ['Southport', 'Surfers Paradise', 'Broadbeach', 'Burleigh', 'Tallebudgera',
+                         'Currumbin', 'Palm Beach', 'Coolangatta', 'Tweed Heads', 'Robina',
+                         'Ashmore', 'Varsity Lakes', 'Molendinar', 'Nerang', 'Runaway Bay']
+            },
+            'Brisbane': {
+                postcodes: [4000, 4001, 4002, 4003, 4004, 4005, 4006, 4007, 4008, 4009, 4010,
+                           4011, 4012, 4013, 4014, 4015, 4016, 4017, 4018, 4019, 4020,
+                           4021, 4022, 4023, 4024, 4025, 4026, 4027, 4028, 4029, 4030, 4050, 4051, 4052, 4053, 4054, 4055, 4056, 4057, 4058, 4059, 4060, 4061, 4062, 4063, 4064, 4065, 4066, 4067, 4068, 4069, 4070, 4074, 4076, 4080, 4081, 4082, 4083, 4101, 4102, 4103, 4104, 4105, 4106, 4107, 4108, 4109, 4110, 4111, 4112, 4113, 4114, 4115, 4116, 4117, 4118, 4119, 4120, 4121, 4122, 4123, 4124, 4125, 4126, 4127, 4128, 4129, 4130, 4131, 4132, 4133, 4134, 4135, 4151, 4152, 4153, 4154, 4155, 4156, 4157, 4158, 4159, 4160, 4163, 4164, 4165, 4166, 4167, 4168, 4169, 4170, 4171, 4172, 4173, 4174, 4175, 4176, 4178, 4179, 4180, 4181, 4183, 4184, 4185, 4207, 4208, 4209, 4210, 4211, 4212, 4213, 4214, 4215, 4216, 4217, 4218, 4219, 4220, 4221, 4222, 4223, 4224, 4225, 4226, 4227, 4228, 4229, 4230, 4560, 4561, 4562, 4563, 4564, 4565, 4566, 4567, 4568, 4569, 4570, 4571, 4572, 4573, 4574, 4575, 4576, 4577, 4578, 4579, 4580],
+                suburbs: ['Brisbane CBD', 'Fortitude Valley', 'South Bank', 'Paddington', 'West End',
+                         'Kangaroo Point', 'Woolloongabba', 'New Farm', 'Teneriffe']
+            },
+            'Byron Bay': {
+                postcodes: [2480, 2481, 2482, 2483, 2484, 2485, 2486, 2487, 2488, 2489],
+                suburbs: ['Byron Bay', 'Bangalow', 'Lennox Head', 'Ballina', 'Alstonville']
+            }
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderStep();
+        });
+
+        // Render current step
+        function renderStep() {
+            const container = document.getElementById('formContainer');
+            updateProgressBar();
+
+            switch (formState.currentStep) {
+                case 1:
+                    renderStep1(container);
+                    break;
+                case 2:
+                    renderStep2(container);
+                    break;
+                case 3:
+                    renderStep3(container);
+                    break;
+                case 4:
+                    renderStep4(container);
+                    break;
+                case 5:
+                    renderStep5(container);
+                    break;
+                case 6:
+                    renderStep6(container);
+                    break;
+            }
+        }
+
+        // Step 1: What do you need?
+        function renderStep1(container) {
+            container.innerHTML = `
+                <div class="form-wrapper">
+                    <div class="step-heading">
+                        <div class="step-number">Step 1 of 6</div>
+                        <h2>What do you need?</h2>
+                    </div>
+                    <div class="tiles">
+                        <div class="tile ${formState.service_type === 'supply_install' ? 'selected' : ''}" onclick="selectServiceType('supply_install')">
+                            <span class="tile-icon">🏗️</span>
+                            <div class="tile-label">Supply + Install</div>
+                            <div class="tile-description">We'll supply and install your new flooring</div>
+                        </div>
+                        <div class="tile ${formState.service_type === 'supply_only' ? 'selected' : ''}" onclick="selectServiceType('supply_only')">
+                            <span class="tile-icon">📦</span>
+                            <div class="tile-label">Supply Only</div>
+                            <div class="tile-description">Just the materials, you'll install</div>
+                        </div>
+                        <div class="tile" onclick="showResearchingMessage()">
+                            <span class="tile-icon">🔍</span>
+                            <div class="tile-label">Just Researching</div>
+                            <div class="tile-description">Still exploring your options</div>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button class="btn-primary" onclick="nextStep()" ${!formState.service_type ? 'disabled' : ''}>Continue →</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectServiceType(type) {
+            formState.service_type = type;
+            renderStep();
+        }
+
+        function showResearchingMessage() {
+            document.getElementById('formContainer').innerHTML = `
+                <div class="message-screen">
+                    <div class="message-icon">👋</div>
+                    <h2>We'd love to help when you're ready</h2>
+                    <p>Take a look at our flooring products and feel free to reach out whenever you're ready to get an estimate.</p>
+                    <a href="/">Browse Our Products →</a>
+                </div>
+            `;
+        }
+
+        // Step 2: Where's your property?
+        function renderStep2(container) {
+            container.innerHTML = `
+                <div class="form-wrapper">
+                    <div class="step-heading">
+                        <div class="step-number">Step 2 of 6</div>
+                        <h2>Where's your property?</h2>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Suburb or Postcode</label>
+                        <input type="text" id="location" placeholder="e.g., Broadbeach or 4218" value="${formState.suburb || formState.postcode || ''}">
+                        <div class="error-message" id="locationError"></div>
+                    </div>
+                    <div class="button-group">
+                        <button class="btn-secondary" onclick="previousStep()">← Back</button>
+                        <button class="btn-primary" onclick="validateLocation()">Continue →</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function validateLocation() {
+            const input = document.getElementById('location').value.trim();
+            const errorDiv = document.getElementById('locationError');
+
+            if (!input) {
+                errorDiv.textContent = 'Please enter a suburb or postcode';
+                errorDiv.classList.add('show');
+                return;
+            }
+
+            // Try to match postcode or suburb
+            let foundMarket = null;
+            let foundPostcode = null;
+
+            const postcode = parseInt(input);
+            if (!isNaN(postcode)) {
+                for (const [market, data] of Object.entries(SERVICE_AREAS)) {
+                    if (data.postcodes.includes(postcode)) {
+                        foundMarket = market;
+                        foundPostcode = postcode;
+                        break;
+                    }
+                }
+            } else {
+                // Try suburb match
+                for (const [market, data] of Object.entries(SERVICE_AREAS)) {
+                    if (data.suburbs.some(s => s.toLowerCase() === input.toLowerCase())) {
+                        foundMarket = market;
+                        foundPostcode = null;
+                        break;
+                    }
+                }
+            }
+
+            if (foundMarket) {
+                formState.market = foundMarket;
+                formState.suburb = input;
+                if (foundPostcode) formState.postcode = foundPostcode;
+                errorDiv.classList.remove('show');
+                nextStep();
+            } else {
+                errorDiv.textContent = "We don't service that area yet — we cover Gold Coast, Brisbane and Byron Bay.";
+                errorDiv.classList.add('show');
+            }
+        }
+
+        // Step 3: Flooring type
+        function renderStep3(container) {
+            const flooringTypes = [
+                { id: 'timber', label: 'Timber Flooring', image: 'https://images.unsplash.com/photo-1569857588248-bfc5a0a15c2e?w=500&q=80', description: 'Classic, warm, premium' },
+                { id: 'hybrid', label: 'Hybrid Flooring', image: 'https://images.unsplash.com/photo-1570129477492-45c003cedd07?w=500&q=80', description: 'Durable, waterproof, modern' },
+                { id: 'carpet', label: 'Carpet', image: 'https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=500&q=80', description: 'Soft, warm, comfortable' },
+                { id: 'vinyl', label: 'Vinyl Flooring', image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=500&q=80', description: 'Affordable, easy-care' },
+                { id: 'laminate', label: 'Laminate Flooring', image: 'https://images.unsplash.com/photo-1562259949-d86142b8767f?w=500&q=80', description: 'Budget-friendly, versatile' },
+                { id: 'unsure', label: 'Not Sure Yet', image: '🤔', description: 'Let us help you choose' }
+            ];
+
+            let tilesHTML = '<div class="tiles" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">';
+            flooringTypes.forEach(type => {
+                tilesHTML += `
+                    <div class="tile ${formState.flooring_type === type.id ? 'selected' : ''}" onclick="selectFlooringType('${type.id}')">
+                        ${type.image === '🤔' ? `<span class="tile-icon">${type.image}</span>` : `<img src="${type.image}" style="width: 100%; height: 120px; object-fit: cover; margin: -2rem -1.5rem 1rem; border-radius: 6px 6px 0 0;" alt="${type.label}">`}
+                        <div class="tile-label">${type.label}</div>
+                        <div class="tile-description">${type.description}</div>
+                    </div>
+                `;
+            });
+            tilesHTML += '</div>';
+
+            container.innerHTML = `
+                <div class="form-wrapper">
+                    <div class="step-heading">
+                        <div class="step-number">Step 3 of 6</div>
+                        <h2>What type of flooring?</h2>
+                    </div>
+                    ${tilesHTML}
+                    <div class="button-group">
+                        <button class="btn-secondary" onclick="previousStep()">← Back</button>
+                        <button class="btn-primary" onclick="nextStep()" ${!formState.flooring_type ? 'disabled' : ''}>Continue →</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectFlooringType(type) {
+            formState.flooring_type = type;
+            renderStep();
+        }
+
+        // Step 4: Area calculation
+        function renderStep4(container) {
+            const rooms = [
+                { id: 'living_dining', label: 'Living/Dining' },
+                { id: 'master_bedroom', label: 'Master Bedroom' },
+                { id: 'bedroom_2', label: 'Bedroom 2' },
+                { id: 'bedroom_3', label: 'Bedroom 3' },
+                { id: 'bedroom_4', label: 'Bedroom 4' },
+                { id: 'hallway', label: 'Hallway' },
+                { id: 'other', label: 'Other (patio, etc.)' }
+            ];
+
+            let roomsHTML = '<div class="room-list">';
+            rooms.forEach(room => {
+                const data = formState.rooms[room.id];
+                roomsHTML += `
+                    <div class="room-item">
+                        <div>
+                            <input type="checkbox" id="room_${room.id}" ${data.checked ? 'checked' : ''} onchange="toggleRoom('${room.id}')">
+                            <label for="room_${room.id}">${room.label}</label>
+                        </div>
+                        <input type="number" id="area_${room.id}" placeholder="m²" value="${data.area || ''}" onchange="updateArea('${room.id}')" ${!data.checked ? 'disabled' : ''} min="0" step="0.1">
+                    </div>
+                `;
+            });
+            roomsHTML += '</div>';
+
+            const totalArea = Object.values(formState.rooms).reduce((sum, room) => sum + (room.checked ? room.area : 0), 0);
+
+            container.innerHTML = `
+                <div class="form-wrapper">
+                    <div class="step-heading">
+                        <div class="step-number">Step 4 of 6</div>
+                        <h2>How much area?</h2>
+                    </div>
+                    <p style="color: var(--text-light); margin-bottom: 1.5rem;">Select the rooms you want to floor, then enter the area in m²</p>
+                    ${roomsHTML}
+                    <div class="area-total">
+                        <div class="area-total-label">Total Area</div>
+                        <div class="area-total-value">${totalArea.toFixed(1)} m²</div>
+                    </div>
+                    ${totalArea < 20 ? `
+                        <div class="area-warning show">
+                            <strong>📞 Small area?</strong>
+                            For areas under 20m², we recommend visiting our showroom. Call us on <strong>1300 45 11 32</strong>
+                        </div>
+                    ` : ''}
+                    <div class="button-group">
+                        <button class="btn-secondary" onclick="previousStep()">← Back</button>
+                        <button class="btn-primary" onclick="nextStep()" ${totalArea === 0 ? 'disabled' : ''}>Continue →</button>
+                    </div>
+                </div>
+            `;
+
+            formState.area_sqm = totalArea;
+        }
+
+        function toggleRoom(roomId) {
+            const checkbox = document.getElementById(`room_${roomId}`);
+            formState.rooms[roomId].checked = checkbox.checked;
+            const areaInput = document.getElementById(`area_${roomId}`);
+            areaInput.disabled = !checkbox.checked;
+            if (!checkbox.checked) {
+                formState.rooms[roomId].area = 0;
+                areaInput.value = '';
+            }
+            renderStep4(document.getElementById('formContainer'));
+        }
+
+        function updateArea(roomId) {
+            const input = document.getElementById(`area_${roomId}`);
+            formState.rooms[roomId].area = parseFloat(input.value) || 0;
+            renderStep4(document.getElementById('formContainer'));
+        }
+
+        // Step 5: Timeline
+        function renderStep5(container) {
+            const timelines = [
+                { id: 'asap', label: 'ASAP (within 4 weeks)', tag: 'HOT', icon: '🔥' },
+                { id: '1-3m', label: '1-3 months', tag: 'WARM', icon: '🌤️' },
+                { id: '3-6m', label: '3-6 months', tag: 'COOL', icon: '❄️' },
+                { id: 'planning', label: 'Just planning', tag: 'NURTURE', icon: '🌱' }
+            ];
+
+            let tilesHTML = '<div class="tiles">';
+            timelines.forEach(timeline => {
+                tilesHTML += `
+                    <div class="tile ${formState.timeline === timeline.id ? 'selected' : ''}" onclick="selectTimeline('${timeline.id}')">
+                        <span class="tile-icon">${timeline.icon}</span>
+                        <div class="tile-label">${timeline.label}</div>
+                        <div class="tile-description">${timeline.tag}</div>
+                    </div>
+                `;
+            });
+            tilesHTML += '</div>';
+
+            container.innerHTML = `
+                <div class="form-wrapper">
+                    <div class="step-heading">
+                        <div class="step-number">Step 5 of 6</div>
+                        <h2>When are you looking to start?</h2>
+                    </div>
+                    ${tilesHTML}
+                    <div class="button-group">
+                        <button class="btn-secondary" onclick="previousStep()">← Back</button>
+                        <button class="btn-primary" onclick="nextStep()" ${!formState.timeline ? 'disabled' : ''}>Continue →</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectTimeline(timeline) {
+            formState.timeline = timeline;
+            renderStep();
+        }
+
+        // Step 6: Contact details
+        function renderStep6(container) {
+            container.innerHTML = `
+                <div class="form-wrapper">
+                    <div class="step-heading">
+                        <div class="step-number">Step 6 of 6</div>
+                        <h2>Your details</h2>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Your name" value="${formState.name || ''}">
+                        <div class="error-message" id="nameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="your@email.com" value="${formState.email || ''}">
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Mobile Number (Australian)</label>
+                        <input type="tel" id="phone" placeholder="04XX XXX XXX or +614XX XXX XXX" value="${formState.phone || ''}">
+                        <div class="error-message" id="phoneError"></div>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" ${formState.agreedToTerms ? 'checked' : ''} onchange="formState.agreedToTerms = !formState.agreedToTerms">
+                        <label for="terms">I agree to receive my estimate and follow-up from Evolved Floors</label>
+                    </div>
+                    <div class="error-message" id="termsError"></div>
+                    <div class="button-group">
+                        <button class="btn-secondary" onclick="previousStep()">← Back</button>
+                        <button class="btn-primary" onclick="submitForm()" id="submitBtn">Send My Estimate →</button>
+                    </div>
+                </div>
+            `;
+
+            // Restore values
+            document.getElementById('name').value = formState.name || '';
+            document.getElementById('email').value = formState.email || '';
+            document.getElementById('phone').value = formState.phone || '';
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const agreedToTerms = document.getElementById('terms').checked;
+
+            formState.name = name;
+            formState.email = email;
+            formState.phone = phone;
+
+            // Validation
+            let isValid = true;
+            document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
+
+            if (!name) {
+                document.getElementById('nameError').textContent = 'Please enter your full name';
+                document.getElementById('nameError').classList.add('show');
+                isValid = false;
+            }
+
+            if (!email || !email.includes('@')) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address';
+                document.getElementById('emailError').classList.add('show');
+                isValid = false;
+            }
+
+            if (!phone || (!phone.match(/^04\d{2}\s?\d{3}\s?\d{3}$/) && !phone.match(/^\+614\d{2}\s?\d{3}\s?\d{3}$/))) {
+                document.getElementById('phoneError').textContent = 'Please enter a valid Australian mobile (04XX XXX XXX or +614XX XXX XXX)';
+                document.getElementById('phoneError').classList.add('show');
+                isValid = false;
+            }
+
+            if (!agreedToTerms) {
+                document.getElementById('termsError').textContent = 'You must agree to receive your estimate';
+                document.getElementById('termsError').classList.add('show');
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
+            // Disable button and show loading
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
+
+            // Normalize phone (remove spaces and convert to standard format)
+            let normalizedPhone = phone.replace(/\s/g, '');
+            if (normalizedPhone.startsWith('04')) {
+                normalizedPhone = '+61' + normalizedPhone.substring(1);
+            }
+
+            // Call worker
+            fetch(`${WORKER_URL}/submit`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: formState.name,
+                    email: formState.email,
+                    phone: normalizedPhone,
+                    suburb: formState.suburb,
+                    postcode: formState.postcode,
+                    flooring_type: formState.flooring_type,
+                    area_sqm: formState.area_sqm,
+                    timeline: formState.timeline,
+                    service_type: formState.service_type,
+                    market: formState.market
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    formState.contactId = data.contactId;
+                    showVerificationScreen();
+                } else {
+                    throw new Error(data.error || 'Failed to submit form');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Send My Estimate →';
+                document.getElementById('termsError').textContent = 'Error sending form. Please try again.';
+                document.getElementById('termsError').classList.add('show');
+            });
+        }
+
+        function showVerificationScreen() {
+            const container = document.getElementById('formContainer');
+            const maskedPhone = formState.phone.replace(/(\d{2})\d{4}(\d{3})/, '$1•••••$2');
+
+            container.innerHTML = `
+                <div class="verification-screen">
+                    <div class="step-heading">
+                        <div class="step-number">Verification</div>
+                        <h2>Check your phone</h2>
+                    </div>
+                    <p>We've sent a 6-digit code to <strong>${maskedPhone}</strong>. Enter it below to unlock your estimate.</p>
+                    <div class="code-input-group" id="codeInputGroup">
+                        <input type="text" class="code-input" maxlength="1" id="code1" autofocus onkeyup="moveToNextCodeInput(this, 'code2')">
+                        <input type="text" class="code-input" maxlength="1" id="code2" onkeyup="moveToNextCodeInput(this, 'code3')">
+                        <input type="text" class="code-input" maxlength="1" id="code3" onkeyup="moveToNextCodeInput(this, 'code4')">
+                        <input type="text" class="code-input" maxlength="1" id="code4" onkeyup="moveToNextCodeInput(this, 'code5')">
+                        <input type="text" class="code-input" maxlength="1" id="code5" onkeyup="moveToNextCodeInput(this, 'code6')">
+                        <input type="text" class="code-input" maxlength="1" id="code6" onkeyup="handleLastCodeInput()">
+                    </div>
+                    <div class="code-message" id="codeMessage"></div>
+                    <div class="resend-group">
+                        You didn't get the code? <button class="resend-link" id="resendBtn" onclick="resendCode()">Resend <span class="resend-timer"></span></button>
+                    </div>
+                </div>
+            `;
+
+            // Auto-focus first input
+            document.getElementById('code1').focus();
+            startResendTimer();
+        }
+
+        function moveToNextCodeInput(el, nextId) {
+            if (el.value.length === 1) {
+                document.getElementById(nextId)?.focus();
+                checkCodeComplete();
+            }
+        }
+
+        function handleLastCodeInput() {
+            checkCodeComplete();
+        }
+
+        function checkCodeComplete() {
+            const code = Array.from({length: 6}, (_, i) => document.getElementById(`code${i+1}`)?.value || '').join('');
+            if (code.length === 6) {
+                verifyCode(code);
+            }
+        }
+
+        function verifyCode(code) {
+            const codeGroup = document.getElementById('codeInputGroup');
+            codeGroup.style.opacity = '0.5';
+
+            fetch(`${WORKER_URL}/verify`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    phone: formState.phone.replace(/\s/g, '').replace(/^04/, '+614'),
+                    code: code
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    showSuccessScreen();
+                } else {
+                    codeGroup.style.opacity = '1';
+                    Array.from({length: 6}, (_, i) => i+1).forEach(i => {
+                        const el = document.getElementById(`code${i}`);
+                        el.classList.add('error');
+                    });
+                    const msg = document.getElementById('codeMessage');
+                    msg.textContent = 'That code doesn\'t match. Try again or request a new one.';
+                    msg.classList.add('show');
+                    setTimeout(() => {
+                        Array.from({length: 6}, (_, i) => i+1).forEach(i => {
+                            document.getElementById(`code${i}`).value = '';
+                            document.getElementById(`code${i}`).classList.remove('error');
+                        });
+                        document.getElementById('code1').focus();
+                    }, 1500);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                codeGroup.style.opacity = '1';
+                const msg = document.getElementById('codeMessage');
+                msg.textContent = 'Error verifying code. Please try again.';
+                msg.classList.add('show');
+            });
+        }
+
+        function resendCode() {
+            const btn = document.getElementById('resendBtn');
+            btn.disabled = true;
+            btn.textContent = 'Resending...';
+
+            fetch(`${WORKER_URL}/resend`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    phone: formState.phone.replace(/\s/g, '').replace(/^04/, '+614')
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    const msg = document.getElementById('codeMessage');
+                    msg.classList.remove('show');
+                    msg.textContent = '';
+                    startResendTimer();
+                    // Clear code inputs
+                    Array.from({length: 6}, (_, i) => {
+                        document.getElementById(`code${i+1}`).value = '';
+                    });
+                    document.getElementById('code1').focus();
+                } else {
+                    throw new Error(data.error || 'Failed to resend');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                btn.disabled = false;
+                btn.textContent = 'Resend';
+                const msg = document.getElementById('codeMessage');
+                msg.textContent = 'Error resending code. Please try again.';
+                msg.classList.add('show');
+            });
+        }
+
+        function startResendTimer() {
+            const btn = document.getElementById('resendBtn');
+            const timerSpan = btn.querySelector('.resend-timer');
+            let seconds = 60;
+
+            btn.disabled = true;
+            timerSpan.textContent = `(${seconds}s)`;
+
+            const interval = setInterval(() => {
+                seconds--;
+                if (seconds <= 0) {
+                    clearInterval(interval);
+                    btn.disabled = false;
+                    timerSpan.textContent = '';
+                    btn.textContent = 'Resend';
+                } else {
+                    timerSpan.textContent = `(${seconds}s)`;
+                }
+            }, 1000);
+        }
+
+        function showSuccessScreen() {
+            document.getElementById('formContainer').innerHTML = `
+                <div class="success-screen">
+                    <div class="success-icon">✓</div>
+                    <h2>Your estimate is on its way</h2>
+                    <p>We've sent your personalized estimate to <strong>${formState.email}</strong>. You'll receive it within 2 minutes.</p>
+                    <p style="margin-top: 2rem; font-size: 0.95rem; color: var(--text-light);">
+                        Questions? Call us on <strong>1300 45 11 32</strong> or chat with our team.
+                    </p>
+                </div>
+            `;
+        }
+
+        // Navigation
+        function nextStep() {
+            if (formState.currentStep < FORM_STEPS) {
+                formState.currentStep++;
+                renderStep();
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function previousStep() {
+            if (formState.currentStep > 1) {
+                formState.currentStep--;
+                renderStep();
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function updateProgressBar() {
+            const progress = (formState.currentStep / FORM_STEPS) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+    </script>
+</body>
+</html>

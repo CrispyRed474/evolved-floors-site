@@ -1,0 +1,26 @@
+name = "evolved-floors-get-started"
+main = "get-started-worker.js"
+compatibility_date = "2024-12-16"
+account_id = "YOUR_CLOUDFLARE_ACCOUNT_ID"
+workers_dev = true
+route = "get-started.evolved-floors.com/*"
+zone_id = "YOUR_CLOUDFLARE_ZONE_ID"
+
+# Environment configuration
+[env.production]
+name = "evolved-floors-get-started-prod"
+routes = [
+  { pattern = "evolved-floors.com/get-started*", zone_name = "evolved-floors.com" }
+]
+vars = { ENVIRONMENT = "production" }
+
+# KV Namespace Binding
+[[kv_namespaces]]
+binding = "FORM_CODES"
+id = "YOUR_KV_NAMESPACE_ID"
+preview_id = "YOUR_KV_NAMESPACE_PREVIEW_ID"
+
+[env.production.kv_namespaces]
+binding = "FORM_CODES"
+id = "YOUR_PRODUCTION_KV_NAMESPACE_ID"
+preview_id = "YOUR_PRODUCTION_KV_NAMESPACE_PREVIEW_ID"

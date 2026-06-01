@@ -1,0 +1,206 @@
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║          EVOLVED FLOORS GET STARTED FORM — QUICK REFERENCE CARD              ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+📁 FILES BUILT
+─────────────────────────────────────────────────────────────────────────────────
+✓ /get-started/index.html                    Form page (48 KB)
+✓ /worker/get-started-worker.js              Worker (13 KB)
+✓ /worker/wrangler.toml                      Config (needs IDs)
+✓ DEPLOYMENT.md                              Full deployment guide
+✓ TEST.md                                    Testing guide
+✓ README.md                                  Complete documentation
+✓ DEPLOY_COMMANDS.sh                         Step-by-step deployment script
+
+
+⚡ QUICK DEPLOY
+─────────────────────────────────────────────────────────────────────────────────
+1. Copy form to site:
+   cp /home/rich/.openclaw/workspace/evolved-site/get-started/index.html \
+      /path/to/live/site/get-started/index.html
+
+2. Create KV namespace: form-codes (via Cloudflare Dashboard)
+
+3. Update wrangler.toml with your IDs:
+   - account_id
+   - zone_id
+   - kv_namespaces[0].id
+   - kv_namespaces[0].preview_id
+
+4. Deploy worker:
+   cd /home/rich/.openclaw/workspace/evolved-site/worker
+   wrangler login
+   wrangler deploy
+
+5. Update GHL number and redeploy:
+   # Edit get-started-worker.js line 12
+   const VERIFY_NUMBER_PLACEHOLDER = '+YOUR_GHL_NUMBER';
+   wrangler deploy
+
+6. Test in browser:
+   https://evolvedfloors.com.au/get-started/
+
+
+🔌 WORKER ENDPOINTS
+─────────────────────────────────────────────────────────────────────────────────
+POST /submit
+  Input: name, email, phone, suburb, postcode, flooring_type, area_sqm,
+         timeline, service_type, market
+  Output: { success: true, contactId: "xxxxx" }
+  Does: GHL contact creation, SMS code generation + send
+
+POST /verify
+  Input: phone, code
+  Output: { success: true }
+  Does: Code validation, GHL contact update, opportunity creation
+
+POST /resend
+  Input: phone
+  Output: { success: true }
+  Does: SMS code resend (same if <8 min, new if >8 min)
+
+
+📍 FORM FLOW (6 Steps)
+─────────────────────────────────────────────────────────────────────────────────
+Step 1: Service type        → Supply+Install | Supply Only | Just Researching
+Step 2: Location            → Suburb/postcode validation → Detects market
+Step 3: Flooring type       → 6 options (can select "Not Sure")
+Step 4: Area calculator     → 7 rooms, running total, min 20m²
+Step 5: Timeline/priority   → ASAP (HOT) | 1-3m (WARM) | 3-6m (COOL) | Plan (NURTURE)
+Step 6: Contact details     → Name, email, phone (Aus format), consent
+        ↓ [Worker submits + sends SMS]
+        Verification        → 6-digit code entry, auto-advance
+        ↓ [Worker verifies + creates opportunity]
+        Success             → "Estimate on its way to [email]"
+
+
+✅ GHL INTEGRATION
+─────────────────────────────────────────────────────────────────────────────────
+Contact Tags (on /submit):        web-unverified, {market}, {timeline_tag}
+Contact Tags (on /verify):        web-verified (replaces web-unverified)
+Custom Fields Stored:             flooring_type, area_sqm, suburb, service_type, timeline
+Opportunity Pipeline:
+  - Gold Coast/Brisbane:          mrLmP8Kc2pEByZ9kN94C (Tom SE QLD)
+  - Byron Bay:                    oT3rDFVUMRfuJGWSkrT2 (Luana Byron Bay)
+Opportunity Title Format:         {flooring_type} - {area_sqm}m² - {suburb}
+Estimate Email Trigger:           Susan's GHL workflow (triggered by 'web-verified' tag)
+
+
+💰 PRICING ($/m²)
+─────────────────────────────────────────────────────────────────────────────────
+Timber:     $159.99/m²   (supply $61.43 + install $92.86 + underlay $5.71)
+Hybrid:     $76.99/m²    (supply $25.71 + install $38.57 + underlay $12.71)
+Carpet:     $76.99/m²    (same as Hybrid)
+Vinyl:      $76.99/m²    (same as Hybrid)
+Laminate:   $76.99/m²    (same as Hybrid)
+Supply Only: 60% of above (no install/underlay)
+Display:    ±15% range (e.g., $3,038–$4,238 for 50m² timber)
+
+
+📱 SERVICE AREAS
+─────────────────────────────────────────────────────────────────────────────────
+Gold Coast:  Postcodes 4000-4299 (Southport, Broadbeach, Burleigh, Nerang, etc.)
+Brisbane:    Postcodes 4000-4080, 4101-4230, 4560-4580 (CBD, Fortitude Valley, etc.)
+Byron Bay:   Postcodes 2480-2489 (Byron Bay, Bangalow, Lennox Head, etc.)
+Outside:     Show "We don't service that area yet" → soft exit, no lead
+
+
+🧪 TEST WITH CURL
+─────────────────────────────────────────────────────────────────────────────────
+Submit form:
+  curl -X POST https://get-started.evolved-floors.workers.dev/submit \
+    -H "Content-Type: application/json" \
+    -d '{"name":"Test","email":"test@example.com","phone":"+61412345678",
+         "suburb":"Broadbeach","postcode":4218,"flooring_type":"timber",
+         "area_sqm":50,"timeline":"asap","service_type":"supply_install",
+         "market":"Gold Coast"}'
+
+Verify code (replace CODE):
+  curl -X POST https://get-started.evolved-floors.workers.dev/verify \
+    -H "Content-Type: application/json" \
+    -d '{"phone":"+61412345678","code":"123456"}'
+
+Resend code:
+  curl -X POST https://get-started.evolved-floors.workers.dev/resend \
+    -H "Content-Type: application/json" \
+    -d '{"phone":"+61412345678"}'
+
+
+⚙️ CONFIGURATION CHECKLIST
+─────────────────────────────────────────────────────────────────────────────────
+Form (index.html):
+  □ WORKER_URL = 'https://get-started.evolved-floors.workers.dev'
+  □ SERVICE_AREAS suburbs/postcodes match reality
+
+Worker (get-started-worker.js):
+  □ VERIFY_NUMBER_PLACEHOLDER = '+YOUR_GHL_SMS_NUMBER' (UPDATE BEFORE DEPLOY)
+  □ GHL_API_KEY = 'pit-09c2b531-b9e2-416f-89c4-edeefd913e68' ✓
+  □ GHL_LOCATION_ID = '1cvFdmlQAU5WpfaQwhB9' ✓
+  □ GHL_PIPELINES correct for your account ✓
+
+Cloudflare:
+  □ KV namespace "form-codes" created
+  □ wrangler.toml: account_id
+  □ wrangler.toml: zone_id
+  □ wrangler.toml: kv_namespaces[0].id
+  □ wrangler.toml: kv_namespaces[0].preview_id
+
+GHL:
+  □ Workflow set up by Susan: trigger on 'web-verified' tag → send estimate email
+
+
+📊 MONITORING
+─────────────────────────────────────────────────────────────────────────────────
+Worker logs:         wrangler tail
+KV usage:            Cloudflare Dashboard → Storage → KV → Metrics
+Form submissions:    GHL Dashboard → Contacts (filter tag: 'web-verified')
+Worker analytics:    Cloudflare Dashboard → Workers → get-started-worker
+
+
+🚀 DEPLOYMENT SCRIPT
+─────────────────────────────────────────────────────────────────────────────────
+For step-by-step interactive deployment:
+  bash /home/rich/.openclaw/workspace/evolved-site/DEPLOY_COMMANDS.sh
+
+
+📚 DOCUMENTATION
+─────────────────────────────────────────────────────────────────────────────────
+README.md        ← Start here, complete overview
+DEPLOYMENT.md    ← Full deployment guide with troubleshooting
+TEST.md          ← Comprehensive testing guide + test data
+QUICK_REFERENCE  ← This file
+
+
+⚠️ CRITICAL: BEFORE DEPLOYING
+─────────────────────────────────────────────────────────────────────────────────
+1. Have Cloudflare account with Workers enabled ✓
+2. Have wrangler CLI installed ✓
+3. Create KV namespace in Cloudflare Dashboard
+4. Get your Cloudflare account ID, zone ID, KV namespace ID ✓
+5. Update wrangler.toml with these IDs ✓
+6. Rich purchases a GHL SMS number ⏳
+7. Update VERIFY_NUMBER_PLACEHOLDER before deploying ⏳
+
+
+❓ SUPPORT
+─────────────────────────────────────────────────────────────────────────────────
+Form not loading?        Check /get-started/ URL is correct
+Form not submitting?     Check WORKER_URL in HTML
+Worker errors?          wrangler tail | Check console logs
+SMS not sending?         Verify GHL number + API key
+Code verification fails? Check KV binding in wrangler.toml
+Opportunity not created? Check GHL pipeline ID for market
+Estimate email delayed?  Check Susan's GHL workflow setup
+
+
+📞 CONTACT
+─────────────────────────────────────────────────────────────────────────────────
+Form questions:    Janet (this bot)
+GHL/Workflow:      Susan
+SMS number:        Rich
+Deployment help:   See DEPLOYMENT.md
+Testing:           See TEST.md
+
+═══════════════════════════════════════════════════════════════════════════════════
+Built: June 1, 2026 | Status: Ready for deployment | Version: 1.0
+═══════════════════════════════════════════════════════════════════════════════════
